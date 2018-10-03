@@ -10,16 +10,21 @@ class Fraction:
         """
         if den == 0:
             raise ValueError("Denominator cannot be zero!")
-        
-        negative = ((num < 0) or (den < 0)) and not (num < 0 and den < 0)
+
+        if den < 0:
+            if num < 0:
+                num = abs(num)
+            else:
+                num *= -1
+            den = abs(den)
         
         div = Fraction.gcd(num, den)
         self.num = num // div
         self.den = den // div
         
-        if negative:
-            self.num = -abs(self.num)
-            self.den = abs(self.den)
+        # if negative:
+        #     self.num = -abs(self.num)
+        #     self.den = abs(self.den)
 
     def __str__(self):
         return str(self.num) + '/' + str(self.den)
@@ -62,7 +67,11 @@ if __name__ == "__main__":
     print("Fraction(3, 7) =", frac)
     frac1 = Fraction(1, 2)
     frac2 = Fraction(2, 3)
+    frac3 = Fraction(-1, 5)
     frac4 = Fraction(1, 2)
-    print("f1 == f4?", frac1 == frac4)
-    frac3 = frac1 + frac2
-    print(frac1, '+', frac2, '=', frac3)
+    print("f1 === f4?", frac1 == frac4)
+    # frac3 = frac1 + frac2
+    print(frac1, '+', frac2, '=', frac1 + frac2)
+    print(frac1, '+', frac3, '=', frac1 + frac3)
+    print("gcd(2,-4) =", Fraction.gcd(2,-4))
+    print("done")
