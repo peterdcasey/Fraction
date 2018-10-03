@@ -29,10 +29,12 @@ class TestFraction(unittest.TestCase):
         except ValueError:
             fail = True
         self.assertTrue(fail)
+        self.assertTrue(self.f6.num == 1)
+        self.assertTrue(self.f6.den == 4)
 
     def test_add(self):
         self.assertEqual(self.f1 + self.f2, Fraction(3, 4))
-        self.assertEqual(self.f3 + self.f6, Fraction(3, 4))
+        self.assertEqual(self.f3 + self.f6, Fraction(1, 2))
         self.assertEqual(self.f1 + self.f2, Fraction(1, 2))
 
     def test_eq(self):
