@@ -13,7 +13,7 @@ class TestFraction(unittest.TestCase):
 
     def setUp(self):
         self.f1 = Fraction(1, 2)
-        self.f2 = Fraction(1, 4)
+        self.f2 = Fraction(2, 8)
         self.f3 = Fraction(1, 4)
         self.f4 = Fraction(-1, 5)
         self.f5 = Fraction(1, -6)
@@ -35,14 +35,18 @@ class TestFraction(unittest.TestCase):
     def test_add(self):
         self.assertEqual(self.f1 + self.f2, Fraction(3, 4))
         self.assertEqual(self.f3 + self.f6, Fraction(1, 2))
-        self.assertEqual(self.f1 + self.f2, Fraction(1, 2))
+        self.assertEqual(self.f1 + self.f4, Fraction(3, 10))
 
     def test_eq(self):
         self.assertNotEqual(self.f1, self.f2)
         self.assertEqual(self.f2, self.f3)
+        self.assertEqual(self.f2, self.f6)
+        self.assertEqual(Fraction(-1, 2), Fraction(1, -2))
+        self.assertEqual(Fraction(-1, -2), Fraction(1, 2))
 
     def test_mul(self):
         self.assertEqual(self.f1 * self.f2, Fraction(1, 8))
+        self.assertEqual(self.f3 * self.f4, Fraction(-1, 20))
 
 
 if __name__ == "__main__":
