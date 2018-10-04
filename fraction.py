@@ -3,7 +3,7 @@ class Fraction:
         Fraction class
     """
     
-    def __init__(self, num, den):
+    def __init__(self, num, den=1):
         """
             Fraction constructor
             Throws ValueError when denominator is zero
@@ -26,7 +26,7 @@ class Fraction:
         self.den = den // div
 
     def reduce(a, ):
-
+        pass
 
     def __str__(self):
         return str(self.num) + '/' + str(self.den)
@@ -76,4 +76,8 @@ if __name__ == "__main__":
     print(frac1, '+', frac2, '=', frac1 + frac2)
     print(frac1, '+', frac3, '=', frac1 + frac3)
     print("gcd(2,-4) =", Fraction.gcd(2,-4))
+    print(Fraction(3))
     print("done")
+    print(Fraction(den=5, num=1))
+    print(Fraction(den=6))
+
