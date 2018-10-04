@@ -11,6 +11,9 @@ class Fraction:
         if den == 0:
             raise ValueError("Denominator cannot be zero!")
 
+        if not isinstance(num, int) or not isinstance(den, int):
+            raise TypeError("Numerator and Denominator must be type int")
+
         if den < 0:
             if num < 0:
                 num = abs(num)
@@ -21,10 +24,9 @@ class Fraction:
         div = Fraction.gcd(num, den)
         self.num = num // div
         self.den = den // div
-        
-        # if negative:
-        #     self.num = -abs(self.num)
-        #     self.den = abs(self.den)
+
+    def reduce(a, ):
+
 
     def __str__(self):
         return str(self.num) + '/' + str(self.den)

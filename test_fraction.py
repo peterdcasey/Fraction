@@ -24,13 +24,25 @@ class TestFraction(unittest.TestCase):
 
     def test_init(self):
         fail = False
+
         try:
             f = Fraction(1, 0)
         except ValueError:
             fail = True
+
         self.assertTrue(fail)
         self.assertTrue(self.f6.num == 1)
         self.assertTrue(self.f6.den == 4)
+
+    def test_init_type(self):
+        fail = False
+
+        try:
+            f = Fraction(1.0, 3)
+        except TypeError:
+            fail = True
+
+        self.assertTrue(fail)
 
     def test_add(self):
         self.assertEqual(self.f1 + self.f2, Fraction(3, 4))
