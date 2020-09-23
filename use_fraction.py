@@ -4,4 +4,6 @@ from fraction import Fraction
 '''
 
 x = Fraction(4, 16)
-print(x)
+y = Fraction(8, 1)
+print(x * y)
+print(x + y)
