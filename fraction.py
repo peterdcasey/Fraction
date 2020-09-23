@@ -18,14 +18,14 @@ class Fraction:
             if num < 0:
                 num = abs(num)
             else:
-                num *= -1
+                num = -num
             den = abs(den)
         
         div = Fraction.gcd(num, den)
         self.num = num // div
         self.den = den // div
 
-    def reduce(a, ):
+    def reduce(self):
         pass
 
     def __str__(self):
@@ -79,5 +79,5 @@ if __name__ == "__main__":
     print(Fraction(3))
     print("done")
     print(Fraction(den=5, num=1))
-    print(Fraction(den=6))
+    print(Fraction(den=6, num=2))
 
