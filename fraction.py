@@ -1,11 +1,14 @@
 from __future__ import annotations
+"""
+    Simple fraction class
+"""
 
 class Fraction:
     """
         Fraction class
     """
     
-    def __init__(self, num: int = 0, den: int =1):
+    def __init__(self: Fraction, num: int = 0, den: int =1):
         """
             Fraction constructor
             Throws ValueError when denominator is zero
@@ -24,43 +27,65 @@ class Fraction:
             den = abs(den)
         
         div: int = Fraction.gcd(num, den)
-        self.num: int = num // div
-        self.den: int = den // div
+        self.__num: int = num // div
+        self.__den: int = den // div
 
-    def reduce(self):
+# ================================================
+# Examples of property stye getters and setters
+#
+    @property
+    def num(self: Fraction) -> int:
+        """
+        'Getter' property
+        """
+        return self.__num
+
+    @num.setter
+    def num(self: Fraction, new_num: int) -> None:
+        """
+        'Setter' property
+        """
+        self.__num = new_num
+
+    @property
+    def den(self: Fraction) -> int:
+        return self.__den        
+#
+# ===================================================
+
+    def reduce(self: Fraction):
+        """
+            Not neededfor immutable type
+        """
         pass
 
-    def __str__(self) -> str:
-        return str(self.num) + '/' + str(self.den)
+    def __str__(self: Fraction) -> str:
+        return str(self.__num) + '/' + str(self.__den)
     
-    def __add__(self, other) -> Fraction:
-        num1 = self.num * other.den
-        num2 = other.num * self.den
-        return Fraction(num1 + num2, self.den * other.den)
+    def __add__(self: Fraction, other: Fraction) -> Fraction:
+        num1 = self.__num * other.den
+        num2 = other.__num * self.__den
+        return Fraction(num1 + num2, self.__den * other.den)
 
-    def __mul__(self, other) -> Fraction:
-        return Fraction(self.num * other.num, self.den * other.den)
+    def __mul__(self: Fraction, other: Fraction) -> Fraction:
+        return Fraction(self.__num * other.num, self.__den * other.den)
     
-    def __eq__(self, other) -> bool:
-        return self.num == other.num and self.den == other.den
+    def __eq__(self: Fraction, other: Fraction) -> bool:
+        return self.__num == other.num and self.__den == other.den
     
     @staticmethod
-    def gcd(a, b):
+    def gcd(a: int, b: int) -> int:
         if b != 0:
             return Fraction.gcd(b, a % b)
         else:
             return abs(a)
 
 
-if __name__ == "__main__":
-    try:
-        f = Fraction(1, 0)
-    except:
-        print("Denominator cannot be zero!")
-        
+def manual_tester() -> None:
     print("gcd(34, 17) =", Fraction.gcd(34, 17))
     print("gcd(3, 17) =", Fraction.gcd(3, 17))
     print("gcd(1024, 2) =", Fraction.gcd(1024, 2))
+
     frac = Fraction(3, -6)
     print("Fraction(3, -6) =", frac)
     frac = Fraction(-3, -6)
@@ -82,4 +107,25 @@ if __name__ == "__main__":
     print("done")
     print(Fraction(den=5, num=1))
     print(Fraction(den=6, num=2))
+
+
+if __name__ == "__main__":
+    manual_tester()
+
+    x: Fraction = Fraction(9, 10)
+    print(f"x.num is {x.num}, x.den is {x.den}")
+    x.num = 5
+    print(f"x.num is {x.num}, x.den is {x.den}")
+
+    try:
+        f: Fraction = Fraction(1, 0)
+    except ValueError:
+        print("Denominator cannot be zero!")
+
+    try:
+        f: Fraction = Fraction(1, 1.1)
+    except TypeError:
+        print("Numerator and Denominator must be type 'int'.")
+        
+
 
