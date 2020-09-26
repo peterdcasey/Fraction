@@ -32,7 +32,7 @@ class Fraction:
         self.__den: int = den // div
 
 # ================================================
-# Examples of property stye getters and setters
+# Examples of property style getters and setters
 #
     @property
     def num(self: Fraction) -> int:
