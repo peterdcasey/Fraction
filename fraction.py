@@ -1,14 +1,15 @@
 from __future__ import annotations
 """
-    Simple fraction class
+    Simple fraction class with a few property examples
 """
+
 
 class Fraction:
     """
         Fraction class
     """
-    
-    def __init__(self: Fraction, num: int = 0, den: int =1):
+
+    def __init__(self: Fraction, num: int = 0, den: int = 1):
         """
             Fraction constructor
             Throws ValueError when denominator is zero
@@ -25,9 +26,9 @@ class Fraction:
             else:
                 num = -num
             den = abs(den)
-        
+
         div: int = Fraction.gcd(num, den)
-        self.__num: int = num // div
+        self.num: int = num // div
         self.__den: int = den // div
 
 # ================================================
@@ -45,11 +46,12 @@ class Fraction:
         """
         'Setter' property
         """
+        print(f"setting the numerator: {new_num}")
         self.__num = new_num
 
     @property
     def den(self: Fraction) -> int:
-        return self.__den        
+        return self.__den
 #
 # ===================================================
 
@@ -61,7 +63,7 @@ class Fraction:
 
     def __str__(self: Fraction) -> str:
         return str(self.__num) + '/' + str(self.__den)
-    
+
     def __add__(self: Fraction, other: Fraction) -> Fraction:
         num1 = self.__num * other.den
         num2 = other.__num * self.__den
@@ -69,10 +71,10 @@ class Fraction:
 
     def __mul__(self: Fraction, other: Fraction) -> Fraction:
         return Fraction(self.__num * other.num, self.__den * other.den)
-    
+
     def __eq__(self: Fraction, other: Fraction) -> bool:
         return self.__num == other.num and self.__den == other.den
-    
+
     @staticmethod
     def gcd(a: int, b: int) -> int:
         if b != 0:
@@ -102,7 +104,7 @@ def manual_tester() -> None:
     # frac3 = frac1 + frac2
     print(frac1, '+', frac2, '=', frac1 + frac2)
     print(frac1, '+', frac3, '=', frac1 + frac3)
-    print("gcd(2,-4) =", Fraction.gcd(2,-4))
+    print("gcd(2,-4) =", Fraction.gcd(2, -4))
     print(Fraction(3))
     print("done")
     print(Fraction(den=5, num=1))
@@ -126,6 +128,3 @@ if __name__ == "__main__":
         f: Fraction = Fraction(1, 1.1)
     except TypeError:
         print("Numerator and Denominator must be type 'int'.")
-        
-
-
