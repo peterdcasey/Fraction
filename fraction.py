@@ -1,9 +1,11 @@
+from __future__ import annotations
+
 class Fraction:
     """
         Fraction class
     """
     
-    def __init__(self, num, den=1):
+    def __init__(self, num: int = 0, den: int =1):
         """
             Fraction constructor
             Throws ValueError when denominator is zero
@@ -21,25 +23,25 @@ class Fraction:
                 num = -num
             den = abs(den)
         
-        div = Fraction.gcd(num, den)
-        self.num = num // div
-        self.den = den // div
+        div: int = Fraction.gcd(num, den)
+        self.num: int = num // div
+        self.den: int = den // div
 
     def reduce(self):
         pass
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.num) + '/' + str(self.den)
     
-    def __add__(self, other):
+    def __add__(self, other) -> Fraction:
         num1 = self.num * other.den
         num2 = other.num * self.den
         return Fraction(num1 + num2, self.den * other.den)
 
-    def __mul__(self, other):
+    def __mul__(self, other) -> Fraction:
         return Fraction(self.num * other.num, self.den * other.den)
     
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return self.num == other.num and self.den == other.den
     
     @staticmethod

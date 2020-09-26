@@ -1,5 +1,5 @@
 """
-    Test code for Fraction class
+    Unit Test code for Fraction class
 """
 
 import unittest
@@ -12,6 +12,9 @@ class TestFraction(unittest.TestCase):
     """
 
     def setUp(self):
+        """
+          Setup runs before each test
+        """
         self.f1 = Fraction(1, 2)
         self.f2 = Fraction(2, 8)
         self.f3 = Fraction(1, 4)
@@ -20,9 +23,15 @@ class TestFraction(unittest.TestCase):
         self.f6 = Fraction(-1, -4)
 
     def tearDown(self):
+        """
+          Teardown runs after each test (clean up)
+        """
         pass
 
     def test_init(self):
+        """
+          Test for the __init__ method
+        """
         fail = False
 
         try:
